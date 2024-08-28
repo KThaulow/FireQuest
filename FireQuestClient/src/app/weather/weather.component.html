@@ -1,0 +1,14 @@
+<h2>Weather Forecast</h2>
+<ul>
+  <li *ngFor="let forecast of weatherForecasts">
+    <div>
+      Date: {{ forecast.date.year }}-{{ forecast.date.month }}-{{ forecast.date.day }} ({{ forecast.date.dayOfWeek }})
+    </div>
+    <div>
+      Temperature: {{ forecast.temperatureC }}°C ({{ forecast.temperatureF }}°F)
+    </div>
+    <div *ngIf="forecast.summary">
+      Summary: {{ forecast.summary }}
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,6 @@
+@FireQuestServer_HostAddress = http://localhost:5078
+
+GET {{FireQuestServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
