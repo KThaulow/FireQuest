@@ -31,3 +31,4 @@
 /Users/kristianthaulow/Dev/FireQuest/FireQuestServer/obj/Debug/net8.0/FireQuestServer.pdb
 /Users/kristianthaulow/Dev/FireQuest/FireQuestServer/obj/Debug/net8.0/FireQuestServer.genruntimeconfig.cache
 /Users/kristianthaulow/Dev/FireQuest/FireQuestServer/obj/Debug/net8.0/ref/FireQuestServer.dll
+/Users/kristianthaulow/Dev/FireQuest/FireQuestServer/obj/Debug/net8.0/FireQuestServer.sourcelink.json

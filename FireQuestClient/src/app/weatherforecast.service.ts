@@ -27,6 +27,7 @@ export class WeatherforecastService {
   constructor(private http: HttpClient) { }
 
   getWeatherForecast(): Observable<WeatherForecast[]> {
-    return this.http.get<WeatherForecast[]>(this.apiUrl);
+    let res = this.http.get<WeatherForecast[]>(this.apiUrl);
+    return res;
   }
 }
