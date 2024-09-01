@@ -8,7 +8,7 @@
       "name": "Launch Chrome against localhost",
       "preLaunchTask": "npm: start",
       "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}/FireQuestClient",
+      "webRoot": "${workspaceFolder}",
     },
     {
       "name": "ng serve",
