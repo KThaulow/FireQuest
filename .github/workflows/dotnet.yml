@@ -1,4 +1,4 @@
-# This workflow will build a .NET project
+# This workflow will build a .NET solution
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
 name: .NET
@@ -22,13 +22,10 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore dependencies
-        run: dotnet restore
-        working-directory: FireQuestServer
+        run: dotnet restore FireQuestServer.sln
 
-      - name: Build
-        run: dotnet build --no-restore
-        working-directory: FireQuestServer
+      - name: Build solution
+        run: dotnet build FireQuestServer.sln --no-restore
 
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
-        working-directory: FireQuestServer
+      - name: Run tests
+        run: dotnet test FireQuestServer.sln --no-build --verbosity normal
