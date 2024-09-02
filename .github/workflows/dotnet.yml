@@ -22,10 +22,13 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore dependencies
-        run: dotnet restore FireQuestServer.sln
+        run: dotnet restore FireQuestServer/FireQuestServer.sln
+        working-directory: FireQuestServer
 
       - name: Build solution
-        run: dotnet build FireQuestServer.sln --no-restore
+        run: dotnet build FireQuestServer/FireQuestServer.sln --no-restore
+        working-directory: FireQuestServer
 
       - name: Run tests
-        run: dotnet test FireQuestServer.sln --no-build --verbosity normal
+        run: dotnet test FireQuestServer/FireQuestServer.sln --no-build --verbosity normal
+        working-directory: FireQuestServer
