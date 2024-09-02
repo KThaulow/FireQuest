@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FireQuestServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9cc86ad62bb91cb59a39c8808a772de26cbd8b3a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+409e341915ad1774fb34fda66229b1d43e31943b")]
 [assembly: System.Reflection.AssemblyProductAttribute("FireQuestServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FireQuestServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

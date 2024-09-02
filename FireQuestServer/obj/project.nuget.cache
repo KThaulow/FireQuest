@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "wHbiad/NeMFFThmUPOOM8DfpxOfE+KiDDA0pNrmpJlUsOpVvvust2T+jv2GdTW26L6Df2Ajz8TUBi0x+cGiFiQ==",
+  "dgSpecHash": "LvrEDgVwczxrwSBRysYbWzJR+QDWELjXQYZK76Fbe8rKS6JFbK6kTgEWLqF51gFgx77zMxwXJGbw1t12712+4A==",
   "success": true,
   "projectFilePath": "/Users/kristianthaulow/Dev/FireQuest/FireQuestServer/FireQuestServer.csproj",
   "expectedPackageFiles": [
-    "/Users/kristianthaulow/.nuget/packages/microsoft.aspnetcore.openapi/8.0.4/microsoft.aspnetcore.openapi.8.0.4.nupkg.sha512",
     "/Users/kristianthaulow/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
-    "/Users/kristianthaulow/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/Users/kristianthaulow/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/Users/kristianthaulow/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "/Users/kristianthaulow/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "/Users/kristianthaulow/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
