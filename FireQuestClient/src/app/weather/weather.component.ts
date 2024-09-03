@@ -19,7 +19,7 @@ export class WeatherComponent implements OnInit {
       next: (data: WeatherForecast[]) => {
         this.weatherForecasts = data; 
       },
-      error: (error: any) => {
+      error: (error: unknown) => {
         console.error('Error fetching weather forecast data', error);
       }
     });
