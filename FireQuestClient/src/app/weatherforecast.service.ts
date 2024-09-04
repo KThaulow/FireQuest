@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
@@ -31,10 +31,10 @@ interface ApiWeatherForecast {
   providedIn: 'root'
 })
 export class WeatherforecastService {
+  http = inject(HttpClient)
+
   private apiUrl = 'http://localhost:5078/api/weatherforecast';
   private weekDays: WeekDay[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-  constructor(private http: HttpClient) { }
 
   getWeatherForecast(): Observable<WeatherForecast[]> {
     return this.http.get<ApiWeatherForecast[]>(this.apiUrl).pipe(

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherforecastService, WeatherForecast } from '../weatherforecast.service';
 
@@ -11,8 +11,7 @@ import { WeatherforecastService, WeatherForecast } from '../weatherforecast.serv
 })
 export class WeatherComponent implements OnInit {
   weatherForecasts: WeatherForecast[] = [];
-
-  constructor(private weatherService: WeatherforecastService) { }
+  weatherService = inject(WeatherforecastService);
 
   ngOnInit(): void {
     this.weatherService.getWeatherForecast().subscribe({
@@ -21,7 +20,8 @@ export class WeatherComponent implements OnInit {
       },
       error: (error: unknown) => {
         console.error('Error fetching weather forecast data', error);
-      }
+      },
+      complete: () => console.log("Request has completed")
     });
   }
 }
