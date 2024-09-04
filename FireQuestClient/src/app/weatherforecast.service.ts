@@ -20,6 +20,13 @@ export interface WeatherForecast {
   summary?: string;
 }
 
+interface ApiWeatherForecast {
+  date: string;
+  temperatureC: number;
+  temperatureF: number;
+  summary?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,7 +37,7 @@ export class WeatherforecastService {
   constructor(private http: HttpClient) { }
 
   getWeatherForecast(): Observable<WeatherForecast[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
+    return this.http.get<ApiWeatherForecast[]>(this.apiUrl).pipe(
       map(forecasts => forecasts.map(forecast => ({
         ...forecast,
         date: this.parseDateOnly(forecast.date)
