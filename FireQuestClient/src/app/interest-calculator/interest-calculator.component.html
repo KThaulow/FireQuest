@@ -1,0 +1,86 @@
+<div class="calculator-container">
+    <h2>Udregn renters rente</h2>
+  
+    <form>
+      <div class="form-group">
+        <label for="existingSavings">Eksisterende opsparing</label>
+        <input
+          type="number"
+          id="existingSavings"
+          [(ngModel)]="existingSavings"
+          name="existingSavings"
+          placeholder="0"
+          class="form-control"
+        />
+        <span>Kr.</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="expectedReturn">Forventet årligt afkast</label>
+        <input
+          type="number"
+          id="expectedReturn"
+          [(ngModel)]="expectedReturn"
+          name="expectedReturn"
+          placeholder="0"
+          class="form-control"
+        />
+        <span>%</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="savingsPeriod">Opsparingsperiode</label>
+        <div class="period-input">
+          <input
+            type="number"
+            id="years"
+            [(ngModel)]="years"
+            name="years"
+            placeholder="0"
+            class="form-control"
+          />
+          <span>År</span>
+          <input
+            type="number"
+            id="months"
+            [(ngModel)]="months"
+            name="months"
+            placeholder="0"
+            class="form-control"
+          />
+          <span>Mdr.</span>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="compoundInterval">Interval af rentetilskrivning</label>
+        <select
+          id="compoundInterval"
+          [(ngModel)]="compoundInterval"
+          name="compoundInterval"
+          class="form-control"
+        >
+          <option value="annually">Årligt</option>
+          <option value="monthly">Månedligt</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="monthlyContribution">Månedlig indbetaling</label>
+        <input
+          type="number"
+          id="monthlyContribution"
+          [(ngModel)]="monthlyContribution"
+          name="monthlyContribution"
+          placeholder="0"
+          class="form-control"
+        />
+        <span>Kr.</span>
+      </div>
+  
+      <button type="button" (click)="calculate()" class="btn btn-primary">
+        Beregn
+      </button>
+    </form>
+  </div>
+  
