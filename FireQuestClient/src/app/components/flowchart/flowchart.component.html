@@ -1,0 +1,15 @@
+<div *ngIf="currentNode.type === 'question'">
+    <h3>{{ currentNode.content }}</h3>
+    <ul>
+      <li *ngFor="let transition of currentNode.next">
+        <button (click)="onSelectAnswer(transition.answer)">
+          {{ transition.answer }}
+        </button>
+      </li>
+    </ul>
+  </div>
+  
+  <div *ngIf="currentNode.type === 'result'">
+    <h3>{{ currentNode.content }}</h3>
+    <button (click)="resetFlow()">Restart</button>
+  </div>
