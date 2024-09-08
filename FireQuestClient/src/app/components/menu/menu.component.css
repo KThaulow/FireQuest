@@ -1,29 +1,43 @@
+/* Menu Bar Styling */
 .menu-bar {
     background-color: #333;
-    overflow: hidden;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .menu-bar ul {
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: space-around;
   }
   
-  .menu-bar ul li {
-    padding: 14px 20px;
+  .menu-bar li {
+    position: relative;
   }
   
-  .menu-bar ul li a {
+  .menu-bar a {
     text-decoration: none;
-    color: white;
-    display: block;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
   }
   
-  .menu-bar ul li a.active {
-    background-color: #4CAF50;
-  }
-  
-  .menu-bar ul li a:hover {
+  .menu-bar a:hover,
+  .menu-bar a.active {
     background-color: #555;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  /* Optional: Adding a subtle transition effect */
+  .menu-bar a {
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  }
+  
+  .menu-bar a:hover {
+    background-color: #444;
+    transform: scale(1.05);
   }

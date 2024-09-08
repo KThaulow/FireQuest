@@ -1,0 +1,84 @@
+/* Hero Section Styling */
+.hero-section {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  .hero-section p {
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  .hero-image {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 0px;
+    border-radius: 0px;
+  }
+  
+  /* Intro Section Styling */
+  .intro {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  
+  .intro h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .intro p {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  .intro-image {
+    width: 80%;
+    max-width: 500px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Guidance Section Styling */
+  .guidance {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .guidance h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .guidance p {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  .guidance ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .guidance li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  .guidance a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.1em;
+  }
+  
+  .guidance a:hover {
+    text-decoration: underline;
+  }
