@@ -1,86 +1,65 @@
 <div class="calculator-container">
-    <h2>Udregn renters rente</h2>
-  
-    <form>
-      <div class="form-group">
-        <label for="existingSavings">Eksisterende opsparing</label>
-        <input
-          type="number"
-          id="existingSavings"
-          [(ngModel)]="existingSavings"
-          name="existingSavings"
-          placeholder="0"
-          class="form-control"
-        />
-        <span>Kr.</span>
+  <h2>Udregn renters rente</h2>
+
+  <form>
+    <!-- Existing savings -->
+    <div class="form-group">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Eksisterende opsparing</mat-label>
+        <span matTextSuffix>kr&nbsp;</span>
+        <input matInput type="number" placeholder="100000" [(ngModel)]="existingSavings" name="existingSavings">
+      </mat-form-field>
+    </div>
+
+    <!-- Expected annual return -->
+    <div class="form-group">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Forventet årligt afkast</mat-label>
+        <input matInput type="number" placeholder="0" [(ngModel)]="expectedReturn" name="expectedReturn">
+        <span matTextSuffix>%</span>
+      </mat-form-field>
+    </div>
+
+    <!-- Savings period -->
+    <div class="form-group">
+      <label>Opsparingsperiode</label>
+      <div class="period-input">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>År</mat-label>
+          <input matInput type="number" placeholder="0" [(ngModel)]="years" name="years">
+          <span matTextSuffix>År</span>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Mdr.</mat-label>
+          <input matInput type="number" placeholder="0" [(ngModel)]="months" name="months">
+          <span matTextSuffix>Mdr</span>
+        </mat-form-field>
       </div>
-  
-      <div class="form-group">
-        <label for="expectedReturn">Forventet årligt afkast</label>
-        <input
-          type="number"
-          id="expectedReturn"
-          [(ngModel)]="expectedReturn"
-          name="expectedReturn"
-          placeholder="0"
-          class="form-control"
-        />
-        <span>%</span>
-      </div>
-  
-      <div class="form-group">
-        <label for="savingsPeriod">Opsparingsperiode</label>
-        <div class="period-input">
-          <input
-            type="number"
-            id="years"
-            [(ngModel)]="years"
-            name="years"
-            placeholder="0"
-            class="form-control"
-          />
-          <span>År</span>
-          <input
-            type="number"
-            id="months"
-            [(ngModel)]="months"
-            name="months"
-            placeholder="0"
-            class="form-control"
-          />
-          <span>Mdr.</span>
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <label for="compoundInterval">Interval af rentetilskrivning</label>
-        <select
-          id="compoundInterval"
-          [(ngModel)]="compoundInterval"
-          name="compoundInterval"
-          class="form-control"
-        >
-          <option value="annually">Årligt</option>
-          <option value="monthly">Månedligt</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="monthlyContribution">Månedlig indbetaling</label>
-        <input
-          type="number"
-          id="monthlyContribution"
-          [(ngModel)]="monthlyContribution"
-          name="monthlyContribution"
-          placeholder="0"
-          class="form-control"
-        />
-        <span>Kr.</span>
-      </div>
-  
-      <button type="button" (click)="calculate()" class="btn btn-primary">
-        Beregn
-      </button>
-    </form>
-  </div>
-  
+    </div>
+
+    <!-- Compound interval -->
+    <div class="form-group">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Interval af rentetilskrivning</mat-label>
+        <mat-select [(ngModel)]="compoundInterval" name="compoundInterval">
+          <mat-option value="annually">Årligt</mat-option>
+          <mat-option value="monthly">Månedligt</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Monthly contribution -->
+    <div class="form-group">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Månedlig indbetaling</mat-label>
+        <span matTextSuffix>kr</span>
+        <input matInput type="number" placeholder="0" [(ngModel)]="monthlyContribution" name="monthlyContribution">
+      </mat-form-field>
+    </div>
+
+    <!-- Calculate button -->
+    <button mat-raised-button color="primary" type="button" (click)="calculate()">
+      Beregn
+    </button>
+  </form>
+</div>
