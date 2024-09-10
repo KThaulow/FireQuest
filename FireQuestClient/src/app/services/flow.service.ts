@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FlowChart, FlowNode } from '../models/flow-node.model';
+import { FlowChart, FlowNode } from '../models/nodes/flow-node.model';
+import { flowConfig } from '../models/nodes/flowConfig';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,7 @@ export class FlowService {
   private currentNode: FlowNode;
 
   constructor() {
-    // Example static flowchart data
-    this.flowchart = flowchartData;
+    this.flowchart = flowConfig;
     this.currentNode = this.getNodeById(this.flowchart.startNodeId);
   }
 
@@ -18,67 +18,30 @@ export class FlowService {
     return this.currentNode;
   }
 
-  selectAnswer(answer: string) {
-    const transition = this.currentNode.next?.find(t => t.answer === answer);
-    if (transition && transition.nextNodeId) {
-      this.currentNode = this.getNodeById(transition.nextNodeId);
+  selectAnswer(answer: string): void {
+    const nextTransition = this.currentNode.next?.find(t => t.answer === answer);
+    if (nextTransition && nextTransition.nextNodeId) {
+      this.currentNode = this.getNodeById(nextTransition.nextNodeId);
     }
+  }
+
+  getAllNodes(): FlowNode[] {
+    return this.flowchart.nodes;
+  }
+
+  resetFlow(): void {
+    this.currentNode = this.getNodeById(this.flowchart.startNodeId);
   }
 
   getNodeById(nodeId: string): FlowNode {
-    return this.flowchart.nodes.find(node => node.id === nodeId)!;
+    const node = this.flowchart.nodes.find(node => node.id === nodeId);
+    if (!node) {
+      throw new Error(`Node with id ${nodeId} not found`);
+    }
+    return node;
   }
 
-  resetFlow() {
-    this.currentNode = this.getNodeById(this.flowchart.startNodeId);
+  getTotalNodes(): number {
+    return this.flowchart.nodes.length;
   }
 }
-
-// Example flowchart data (replace this with actual data or fetch from an API)
-const flowchartData: FlowChart = {
-  startNodeId: 'start',
-  nodes: [
-    {
-      id: 'start',
-      type: 'question',
-      content: 'Do you want to retire early?',
-      next: [
-        { answer: 'Yes', nextNodeId: 'savings' },
-        { answer: 'No', nextNodeId: 'end' }
-      ]
-    },
-    {
-      id: 'savings',
-      type: 'question',
-      content: 'Do you have a savings plan?',
-      next: [
-        { answer: 'Yes', nextNodeId: 'invest' },
-        { answer: 'No', nextNodeId: 'startSaving' }
-      ]
-    },
-    {
-      id: 'invest',
-      type: 'question',
-      content: 'Do you invest regularly?',
-      next: [
-        { answer: 'Yes', nextNodeId: 'end' },
-        { answer: 'No', nextNodeId: 'startInvest' }
-      ]
-    },
-    {
-      id: 'startSaving',
-      type: 'result',
-      content: 'Start saving now'
-    },
-    {
-      id: 'startInvest',
-      type: 'result',
-      content: 'Start invest now'
-    },
-    {
-      id: 'end',
-      type: 'result',
-      content: 'You have everything under control'
-    }
-  ]
-};

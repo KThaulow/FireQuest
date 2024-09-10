@@ -1,15 +1,47 @@
-<div *ngIf="currentNode.type === 'question'">
-    <h3>{{ currentNode.content }}</h3>
-    <ul>
-      <li *ngFor="let transition of currentNode.next">
-        <button (click)="onSelectAnswer(transition.answer)">
-          {{ transition.answer }}
-        </button>
-      </li>
-    </ul>
+<div class="flowchart-wrapper">
+    <div class="progress-bar">
+      <div class="progress" [ngStyle]="{ width: progressPercentage + '%' }"></div>
+    </div>
+  
+    <div class="flow-container">
+      <div class="flow-content">
+        <div class="flow-node"
+             [ngClass]="{
+               'slide-out': isTransitioning,
+               'left': transitionDirection === 'left',
+               'right': transitionDirection === 'right'
+             }">
+          <ng-container *ngTemplateOutlet="nodeContent; context: { node: currentNode }"></ng-container>
+        </div>
+        <div *ngIf="nextNode" class="flow-node"
+             [ngClass]="{
+               'slide-in': isTransitioning,
+               'left': transitionDirection === 'left',
+               'right': transitionDirection === 'right'
+             }">
+          <ng-container *ngTemplateOutlet="nodeContent; context: { node: nextNode }"></ng-container>
+        </div>
+      </div>
+    </div>
+  
+    <div class="navigation-buttons">
+      <button *ngIf="canGoBack" (click)="goBack()" class="back-button">Go Back</button>
+    </div>
   </div>
   
-  <div *ngIf="currentNode.type === 'result'">
-    <h3>{{ currentNode.content }}</h3>
-    <button (click)="resetFlow()">Restart</button>
-  </div>
+  <ng-template #nodeContent let-node="node">
+    <div class="node-content">
+      <ng-container *ngIf="node.type === 'question'">
+        <h2 class="question">{{ node.content }}</h2>
+        <div class="options">
+          <button *ngFor="let option of node.next" (click)="selectAnswer(option.answer)" class="option-button">
+            {{ option.answer }}
+          </button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="node.type === 'result'">
+        <h2 class="result">{{ node.content }}</h2>
+        <button (click)="resetFlow()" class="reset-button">Restart</button>
+      </ng-container>
+    </div>
+  </ng-template>
