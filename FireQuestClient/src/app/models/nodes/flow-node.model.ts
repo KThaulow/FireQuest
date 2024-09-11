@@ -4,6 +4,7 @@ export interface FlowNode {
   type: 'question' | 'result';  // Type of node
   content: string;  // The question or result text
   next?: FlowTransition[];  // Array of possible transitions (for questions only)
+  infoBox?: string; // Optional field for additional information
 }
 
 export interface FlowTransition {

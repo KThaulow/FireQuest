@@ -26,7 +26,7 @@ export const investGoalQuestions: FlowNode[] = [
     content: 'Hvad er dit mål med at investere?',
     next: [
       { answer: 'Jeg vil gerne tilgodese mine børn', nextNodeId: 'childSavings' },
-      { answer: 'Jeg vil gerne have penge til rådighed efter jeg runder folkepensionsalderen eller tidligst 3/5 år før', nextNodeId: 'retirementSavings' },
+      { answer: 'Jeg vil gerne have penge til rådighed efter jeg runder folkepensionsalderen eller tidligst 3/5 år før', nextNodeId: 'aldersOpsparing' },
       { answer: 'Jeg vil gerne kunne trække mig tilbage fra arbejdsmarkedet før folkepensionsalderen', nextNodeId: 'earlyRetirement' },
       { answer: 'Jeg vil gerne opbygge en formue uden begrænsninger for udbetaling', nextNodeId: 'unrestrictedSavings' },
     ],
@@ -44,6 +44,15 @@ export const childSavingsQuestions: FlowNode[] = [
 
 // Retirement Savings Section
 export const retirementSavingsQuestions: FlowNode[] = [
+  {
+    id: 'aldersOpsparing',
+    type: 'question',
+    content: 'Opret en aldersopsparing. Invester i akkumulerende ETFer, Undersog forst om du allerede har en aldersopsparing igennem din arbejdsmarkedspension',
+    next: [
+      { answer: 'Det har jeg gjort', nextNodeId: 'retirementSavings' },
+    ],
+    infoBox: 'Akkumulerende ETFer fra skats positivliste. Fordele: Lav AOP, akkumulerende. Ulemper: Vekslingsgebyr, lagerbeskatning og depotgebyr i mange banker. Oplagt til depoter der i forvejen er lagerbeskattede. Eksempel pả en portefolje: 100% iShares MSCI ACWI UCITS (IUSQ)'
+  },
   {
     id: 'retirementSavings',
     type: 'question',
@@ -89,5 +98,11 @@ export const unrestrictedSavingsQuestions: FlowNode[] = [
     id: 'unrestrictedSavings',
     type: 'result',
     content: 'Opret et almindeligt depot (frie midler). Investér i danske akkumulerende aktiefonde eller ETF\'er.',
+    infoBox: `Danske akkumulerende aktiefonde eller ETF'er som ikke er pa Skats positivliste.
+    Fordele: Beskattet som kapitalindkomst
+    Ulemper: Beskattet som kapitalindkomst
+    Oplagt hvis man ikke udnytter sit bundfradrag, eksempelvis ved FIRE eller små børn.
+    Eksempel pa en portefolje:
+    100% INDEX Globale Aktier Min. Risiko Akk. KL (SPVIGAMRAKL)`,
   },
 ];

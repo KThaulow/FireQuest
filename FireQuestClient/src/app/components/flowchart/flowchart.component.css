@@ -157,3 +157,25 @@
   from { transform: translateX(0); }
   to { transform: translateX(100%); }
 }
+
+  /* Info Box Styling */
+  .info-box {
+    background-color: #e8f5e9; /* Light green background */
+    color: #2e7d32; /* Darker green text */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .info-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .info-box p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }

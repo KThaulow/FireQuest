@@ -1,49 +1,52 @@
 <h1>Guide til passiv investering</h1>
-
 <div class="flowchart-wrapper">
-    <div class="progress-bar">
-      <div class="progress" [ngStyle]="{ width: progressPercentage + '%' }"></div>
-    </div>
-  
-    <div class="flow-container">
-      <div class="flow-content">
-        <div class="flow-node"
-             [ngClass]="{
-               'slide-out': isTransitioning,
-               'left': transitionDirection === 'left',
-               'right': transitionDirection === 'right'
-             }">
-          <ng-container *ngTemplateOutlet="nodeContent; context: { node: currentNode }"></ng-container>
-        </div>
-        <div *ngIf="nextNode" class="flow-node"
-             [ngClass]="{
-               'slide-in': isTransitioning,
-               'left': transitionDirection === 'left',
-               'right': transitionDirection === 'right'
-             }">
-          <ng-container *ngTemplateOutlet="nodeContent; context: { node: nextNode }"></ng-container>
-        </div>
+  <div class="progress-bar">
+    <div class="progress" [ngStyle]="{ width: progressPercentage + '%' }"></div>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-content">
+      <div class="flow-node"
+           [ngClass]="{
+             'slide-out': isTransitioning,
+             'left': transitionDirection === 'left',
+             'right': transitionDirection === 'right'
+           }">
+        <ng-container *ngTemplateOutlet="nodeContent; context: { node: currentNode }"></ng-container>
+      </div>
+      <div *ngIf="nextNode" class="flow-node"
+           [ngClass]="{
+             'slide-in': isTransitioning,
+             'left': transitionDirection === 'left',
+             'right': transitionDirection === 'right'
+           }">
+        <ng-container *ngTemplateOutlet="nodeContent; context: { node: nextNode }"></ng-container>
       </div>
     </div>
-  
-    <div class="navigation-buttons">
-      <button *ngIf="canGoBack" (click)="goBack()" class="back-button">Go Back</button>
+  </div>
+
+  <div class="navigation-buttons">
+    <button *ngIf="canGoBack" (click)="goBack()" class="back-button">Tilbage</button>
+  </div>
+</div>
+
+<ng-template #nodeContent let-node="node">
+  <div class="node-content">
+    <ng-container *ngIf="node.type === 'question'">
+      <h2 class="question">{{ node.content }}</h2>
+      <div class="options">
+        <button *ngFor="let option of node.next" (click)="selectAnswer(option.answer)" class="option-button">
+          {{ option.answer }}
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="node.type === 'result'">
+      <h2 class="result">{{ node.content }}</h2>
+      <button (click)="resetFlow()" class="reset-button">Start forfra</button>
+    </ng-container>
+    <div *ngIf="node.infoBox" class="info-box">
+      <h3>Info</h3>
+      <p>{{ node.infoBox }}</p>
     </div>
   </div>
-  
-  <ng-template #nodeContent let-node="node">
-    <div class="node-content">
-      <ng-container *ngIf="node.type === 'question'">
-        <h2 class="question">{{ node.content }}</h2>
-        <div class="options">
-          <button *ngFor="let option of node.next" (click)="selectAnswer(option.answer)" class="option-button">
-            {{ option.answer }}
-          </button>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="node.type === 'result'">
-        <h2 class="result">{{ node.content }}</h2>
-        <button (click)="resetFlow()" class="reset-button">Restart</button>
-      </ng-container>
-    </div>
-  </ng-template>
+</ng-template>
