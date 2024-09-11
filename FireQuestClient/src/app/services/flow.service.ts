@@ -44,4 +44,23 @@ export class FlowService {
   getTotalNodes(): number {
     return this.flowchart.nodes.length;
   }
+
+  findMaxDepth(node: FlowNode, depth = 0): number {
+    // If it's a result node, we've reached the end of this path
+    if (!node.next) {
+      return depth;
+    }
+  
+    // Recursively check each possible answer's next node
+    const nextDepths = node.next.map((answer) => {
+      const nextNode = this.flowchart.nodes.find(n => n.id === answer.nextNodeId);
+      if (nextNode) {
+        return this.findMaxDepth(nextNode, depth + 1);
+      }
+      return depth;
+    });
+  
+    // Return the maximum depth from all possible paths
+    return Math.max(...nextDepths);
+  }
 }

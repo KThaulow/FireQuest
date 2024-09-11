@@ -71,7 +71,13 @@ export class FlowchartComponent implements OnInit {
   }
 
   private updateProgress(): void {
-    const totalNodes = this.flowService.getTotalNodes();
-    this.progressPercentage = (this.nodeHistory.length / totalNodes) * 100;
+    //const totalNodes = this.flowService.getTotalNodes();
+    const maxDepth = this.flowService.findMaxDepth(this.currentNode);
+    this.progressPercentage = (this.nodeHistory.length / (maxDepth + this.nodeHistory.length)) * 100;
+
+    if(this.currentNode.type == 'result')
+    {
+      this.progressPercentage = 100;
+    }
   }
 }

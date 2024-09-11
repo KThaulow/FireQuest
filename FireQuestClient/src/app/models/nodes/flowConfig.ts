@@ -1,13 +1,14 @@
-import { coffeeQuestions } from "./cofee-questions";
 import { FlowChart } from "./flow-node.model";
-import { resultNodes } from "./results";
-import { teaQuestions } from "./tea-questions";
+import { childSavingsQuestions, earlyRetirementQuestions, investGoalQuestions, investmentHorizonQuestions, retirementSavingsQuestions, unrestrictedSavingsQuestions } from "./passiveInvestmentFlow";
 
 export const flowConfig: FlowChart = {
-  startNodeId: 'q1',
+  startNodeId: 'start',
   nodes: [
-    ...coffeeQuestions,
-    ...teaQuestions,
-    ...resultNodes,
+    ...investmentHorizonQuestions,
+    ...investGoalQuestions,
+    ...childSavingsQuestions,
+    ...retirementSavingsQuestions,
+    ...earlyRetirementQuestions,
+    ...unrestrictedSavingsQuestions
   ],
 };
