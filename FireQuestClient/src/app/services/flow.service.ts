@@ -45,17 +45,25 @@ export class FlowService {
     return this.flowchart.nodes.length;
   }
 
-  findMaxDepth(node: FlowNode, depth = 0): number {
+  findMaxDepth(node: FlowNode, visited = new Set<string>(), depth = 0): number {
+    // If the node is already in the visited set, return the current depth (cycle detected)
+    if (visited.has(node.id)) {
+      return depth;
+    }
+  
     // If it's a result node, we've reached the end of this path
     if (!node.next) {
       return depth;
     }
   
+    // Mark the current node as visited
+    visited.add(node.id);
+  
     // Recursively check each possible answer's next node
     const nextDepths = node.next.map((answer) => {
       const nextNode = this.flowchart.nodes.find(n => n.id === answer.nextNodeId);
       if (nextNode) {
-        return this.findMaxDepth(nextNode, depth + 1);
+        return this.findMaxDepth(nextNode, new Set(visited), depth + 1); // Pass a copy of the visited set to avoid mutation
       }
       return depth;
     });
