@@ -21,14 +21,13 @@ export class FlowchartComponent implements OnInit {
   constructor(private flowService: FlowService) {}
 
   ngOnInit(): void {
-    this.currentNode = this.flowService.getCurrentNode();
+    this.currentNode = this.flowService.getStartingNode();
     this.nodeHistory.push(this.currentNode);
     this.updateProgress();
   }
 
   selectAnswer(answer: string): void {
-    this.flowService.selectAnswer(answer);
-    this.nextNode = this.flowService.getCurrentNode();
+    this.nextNode = this.flowService.selectAnswer(this.currentNode, answer);
     this.transitionDirection = 'left';
     this.isTransitioning = true;
     
@@ -38,7 +37,7 @@ export class FlowchartComponent implements OnInit {
       this.nextNode = null;
       this.isTransitioning = false;
       this.updateProgress();
-    }, 500); // Match this to your CSS animation duration
+    }, 500);
   }
 
   goBack(): void {
@@ -53,13 +52,12 @@ export class FlowchartComponent implements OnInit {
         this.nextNode = null;
         this.isTransitioning = false;
         this.updateProgress();
-      }, 500); // Match this to your CSS animation duration
+      }, 500);
     }
   }
 
   resetFlow(): void {
-    this.flowService.resetFlow();
-    this.currentNode = this.flowService.getCurrentNode();
+    this.currentNode = this.flowService.getStartingNode();
     this.nodeHistory = [this.currentNode];
     this.nextNode = null;
     this.isTransitioning = false;
@@ -71,7 +69,6 @@ export class FlowchartComponent implements OnInit {
   }
 
   private updateProgress(): void {
-    //const totalNodes = this.flowService.getTotalNodes();
     const maxDepth = this.flowService.findMaxDepth(this.currentNode);
     this.progressPercentage = (this.nodeHistory.length / (maxDepth + this.nodeHistory.length)) * 100;
 
