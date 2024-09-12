@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InterestCalculatorComponent } from './interest-calculator.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('InterestCalculatorComponent', () => {
   let component: InterestCalculatorComponent;
@@ -8,7 +9,7 @@ describe('InterestCalculatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InterestCalculatorComponent]
+      imports: [InterestCalculatorComponent, BrowserAnimationsModule]
     })
     .compileComponents();
 
