@@ -22,17 +22,15 @@
 
     <!-- Savings period -->
     <div class="form-group">
-      <label>Opsparingsperiode</label>
-      <div class="period-input">
+      <label for="period-input">Opsparingsperiode</label>
+      <div class="period-input" style="display: flex; gap: 1rem;">
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>År</mat-label>
-          <input matInput type="number" placeholder="0" [(ngModel)]="years" name="years">
-          <span matTextSuffix>År</span>
+          <input id="year-input" matInput type="number" placeholder="0" [(ngModel)]="years" name="years" min="0">
         </mat-form-field>
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Mdr.</mat-label>
-          <input matInput type="number" placeholder="0" [(ngModel)]="months" name="months">
-          <span matTextSuffix>Mdr</span>
+          <input id="month-input" matInput type="number" placeholder="0" [(ngModel)]="months" name="months" min="0">
         </mat-form-field>
       </div>
     </div>

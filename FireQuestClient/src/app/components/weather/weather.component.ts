@@ -14,8 +14,6 @@ export class WeatherComponent implements OnInit {
   weatherService = inject(WeatherforecastService);
 
   ngOnInit(): void {
-    console.log("Weather has loaded")
-
     this.weatherService.getWeatherForecast().subscribe({
       next: (data: WeatherForecast[]) => {
         this.weatherForecasts = data; 
@@ -25,9 +23,5 @@ export class WeatherComponent implements OnInit {
       },
       complete: () => console.log("Request has completed")
     });
-  }
-
-  ngAfterViewInit() {
-    console.log('ngAfterViewInit called in WeatherComponent');
   }
 }

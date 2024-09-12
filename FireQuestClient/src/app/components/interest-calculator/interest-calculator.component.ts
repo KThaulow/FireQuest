@@ -13,12 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [FormsModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatButtonModule],
 })
 export class InterestCalculatorComponent {
-  existingSavings: number = 50000;
-  expectedReturn: number = 7;
-  years: number = 10;
-  months: number = 0;
-  compoundInterval: string = 'annually';
-  monthlyContribution: number = 5000;
+  existingSavings = 50000;
+  expectedReturn = 7;
+  years = 10;
+  months = 0;
+  compoundInterval = 'annually';
+  monthlyContribution = 5000;
 
   calculate() {
     const totalYears = this.years + this.months / 12;
