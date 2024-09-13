@@ -1,36 +1,53 @@
-<div class="link-list">
-    <mat-card *ngFor="let link of links" class="link-card">
-      <div class="link-content">
-        <mat-card-title>{{ link.title }}</mat-card-title>
-        <mat-card-content>{{ link.description }}</mat-card-content>
+<h1 class="main-title">Budget</h1>
+
+<div class="content-wrapper">
+  <mat-card class="link-list-container">
+    <mat-card-content>
+      <div class="link-list">
+        <mat-card *ngFor="let link of links" class="link-card mat-elevation-z4">
+          <mat-card-header>
+            <mat-card-title>{{ link.title }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ link.description }}</p>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <a mat-raised-button color="primary" [href]="link.url" target="_blank">Lær Mere</a>
+          </mat-card-actions>
+        </mat-card>
       </div>
-      <mat-card-actions class="link-actions">
-        <a mat-button color="primary" href="{{ link.url }}" target="_blank">Lær Mere</a>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  
-  <!-- Budget Information Section in Danish -->
-  <div class="budget-info">
-    <h2>Hvorfor det er vigtigt at lave et budget</h2>
-    <p>
-      Et budget er et vigtigt værktøj til at styre din økonomi effektivt. Det hjælper dig med at holde styr på dine indtægter og udgifter, så du har kontrol over dine penge. 
-      Ved at lave et budget kan du planlægge for fremtiden, sætte økonomiske mål og undgå unødvendig gæld.
-    </p>
-  
-    <h3>Sådan laver du et budget</h3>
-    <p>
-      For at lave et budget skal du starte med at beregne din samlede månedlige indkomst. Derefter skal du lave en liste over dine faste udgifter som bolig, mad, transport og opsparing.
-      Når du har et klart billede af dine indtægter og udgifter, kan du fordele dine penge til disse kategorier, mens du også efterlader plads til opsparing og nødsituationer.
-    </p>
-  
-    <h3>Værktøjer du kan bruge til budgettering</h3>
-    <p>
-      Der findes flere værktøjer, som kan hjælpe dig med at lave et budget, såsom:
-    </p>
-    <ul>
-      <li>Regneark som Microsoft Excel eller Google Sheets, hvor du kan tilpasse budgetskabeloner.</li>
-      <li>Apps som <a href="https://www.youneedabudget.com/" target="_blank">You Need A Budget (YNAB)</a> eller <a href="https://www.mint.com/" target="_blank">Mint</a> til nem sporing på farten.</li>
-      <li>Pen og papir for en simpel, praktisk tilgang.</li>
-    </ul>
-  </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="budget-info">
+    <mat-card-header>
+      <mat-card-title>Hvorfor det er vigtigt at lave et budget</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Et budget er et vigtigt værktøj til at styre din økonomi effektivt. Det hjælper dig med at holde styr på dine indtægter og udgifter, så du har kontrol over dine penge. 
+        Ved at lave et budget kan du planlægge for fremtiden, sætte økonomiske mål og undgå unødvendig gæld.
+      </p>
+
+      <mat-divider></mat-divider>
+
+      <h3>Sådan laver du et budget</h3>
+      <p>
+        For at lave et budget skal du starte med at beregne din samlede månedlige indkomst. Derefter skal du lave en liste over dine faste udgifter som bolig, mad, transport og opsparing.
+        Når du har et klart billede af dine indtægter og udgifter, kan du fordele dine penge til disse kategorier, mens du også efterlader plads til opsparing og nødsituationer.
+      </p>
+
+      <mat-divider></mat-divider>
+
+      <h3>Værktøjer du kan bruge til budgettering</h3>
+      <p>
+        Der findes flere værktøjer, som kan hjælpe dig med at lave et budget, såsom:
+      </p>
+      <mat-list>
+        <mat-list-item >Regneark som Microsoft Excel eller Google Sheets, hvor du kan tilpasse budgetskabeloner.</mat-list-item>
+        <mat-list-item>Apps som <a mat-button color="accent" href="https://www.youneedabudget.com/" target="_blank">You Need A Budget (YNAB)</a> eller <a mat-button color="accent" href="https://www.mint.com/" target="_blank">Mint</a> til nem sporing på farten.</mat-list-item>
+        <mat-list-item>Pen og papir for en simpel, praktisk tilgang.</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

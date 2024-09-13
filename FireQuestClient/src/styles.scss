@@ -1,0 +1,82 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the theme object.
+$FireQuestClient-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.all-component-themes($FireQuestClient-theme);
+}
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($FireQuestClient-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($FireQuestClient-theme);
+
+/* Custom color variables */
+$dark-green: #2e7d32;
+$even-darker-green:#27632a;
+$anthracite-grey: #2C3539;
+$light-grey: #F5F5F5;
+$white: #FFFFFF;
+
+/* Global styles */
+body {
+  background-color: $light-grey;
+  color: $anthracite-grey;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.mat-toolbar {
+  background-color: $anthracite-grey;
+  color: $white;
+}
+
+.mat-mdc-raised-button.mat-primary {
+  background-color: $dark-green;
+}
+
+.mat-mdc-card {
+  background-color: $white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.finance-accent {
+  color: $dark-green;
+}
+
+.finance-bg {
+  background-color: $anthracite-grey;
+  color: $white;
+}
+
+h1 {
+  color: $dark-green; /* Set default color for all h1 elements */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

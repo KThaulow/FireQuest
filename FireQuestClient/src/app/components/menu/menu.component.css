@@ -1,6 +1,6 @@
 /* Menu Bar Styling */
 .menu-bar {
-    background-color: #333;
+    background-color: #27632a;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
@@ -27,7 +27,7 @@
   
   .menu-bar a:hover,
   .menu-bar a.active {
-    background-color: #555;
+    background-color: #2e7d32;
     color: #fff;
     border-radius: 5px;
   }
@@ -38,6 +38,6 @@
   }
   
   .menu-bar a:hover {
-    background-color: #444;
+    background-color: #2e7d32;
     transform: scale(1.05);
   }

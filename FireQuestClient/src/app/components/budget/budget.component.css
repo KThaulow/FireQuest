@@ -1,8 +1,22 @@
-/* Link List Section */
-.link-list {
-    background-color: #303030;
-    padding: 40px 20px;
+.main-title {
     text-align: center;
+    margin: 20px 0;
+  }
+  
+  .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Link List Section */
+  .link-list-container {
+    background-color: #303030;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .link-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -11,95 +25,45 @@
   
   /* Individual Link Card */
   .link-card {
-    background-color: #424242;
     width: 300px;
-    padding: 20px;
-    border-radius: 10px;
+    background-color: #424242;
     color: #ffffff;
-    display: flex;
-    flex-direction: column; /* Ensures column layout */
-    justify-content: space-between; /* Space between content and actions */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
+  }
+  
+  .link-card .mat-card-title {
+    color: #ffffff;
+    font-size: 1.4em;
+  }
+  
+  .link-card .mat-card-content {
+    color: #bbbbbb;
+  }
+  
+  .link-card .mat-raised-button {
+    margin-bottom: 8px;
   }
   
   /* Card Hover Effect */
   .link-card:hover {
     transform: translateY(-10px);
+    transition: transform 0.3s ease-in-out;
   }
   
-  /* Link Content */
-  .link-content {
-    flex-grow: 1; /* Makes the content fill the available space */
-  }
-  
-  /* Link Card Title */
-  .link-card h2 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    color: #ffffff;
-  }
-  
-  /* Link Card Description */
-  .link-card p {
-    font-size: 1.1em;
-    color: #bbbbbb;
-    margin-bottom: 15px;
-  }
-  
-  /* Actions Section */
-  .link-actions {
-    margin-top: auto; /* Pushes the actions (button) to the bottom */
-  }
-  
-  /* Link Action Button */
-  .link-actions a {
-    color: #4caf50;
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: bold;
-  }
-  
-  .link-actions a:hover {
-    text-decoration: underline;
-    color: #81c784;
-  }
-  
-  /* Responsive Media Query */
-  @media (max-width: 768px) {
-    .link-list {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .link-card {
-      width: 90%;
-    }
-  }
-
   /* Budget Info Section */
-.budget-info {
+  .budget-info {
     background-color: #f9f9f9;
     color: #333;
-    padding: 40px 20px;
-    text-align: left;
-    margin-top: 40px;
-    border-radius: 10px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 40px;
   }
   
-  .budget-info h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #4caf50; /* Use green to match the theme */
+  .budget-info .mat-card-title {
+    color: #4caf50;
+    font-size: 1.8em;
   }
   
   .budget-info h3 {
     font-size: 1.5em;
     margin-top: 20px;
-    margin-bottom: 10px;
     color: #333;
   }
   
@@ -108,20 +72,19 @@
     color: #555;
   }
   
-  .budget-info ul {
-    list-style-type: disc;
-    padding-left: 40px;
+  .budget-info .mat-list-item {
+    border: 5px solid red !important; /* Ensure this rule is applied */
+  }
+
+  .budget-info .mat-list-item-content {
+    color: #333 !important; /* Ensure content text is not faded */
   }
   
-  .budget-info ul li {
-    margin-bottom: 10px;
+  .budget-info .mat-list-item a {
+    color: #4caf50; /* Ensure links are visible and stand out */
   }
   
-  .budget-info a {
-    color: #007bff;
-    text-decoration: none;
+  .budget-info .mat-list-item a:hover {
+    text-decoration: underline; /* Add underline on hover for links */
   }
-  
-  .budget-info a:hover {
-    text-decoration: underline;
-  }
+
