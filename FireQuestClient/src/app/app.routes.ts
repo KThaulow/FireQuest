@@ -3,6 +3,7 @@ import { InterestCalculatorComponent } from './components/interest-calculator/in
 import { WeatherComponent } from './components/weather/weather.component';
 import { FlowchartComponent } from './components/flowchart/flowchart.component';
 import { HomeComponent } from './components/home/home.component';
+import { BudgetComponent } from './components/budget/budget.component';
 
 export const routes: Routes = 
 [
@@ -10,5 +11,6 @@ export const routes: Routes =
     { path: 'weather', component: WeatherComponent},
     { path: 'interest', component: InterestCalculatorComponent},
     { path: 'flow', component: FlowchartComponent},
+    { path: 'budget', component: BudgetComponent},
     { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
