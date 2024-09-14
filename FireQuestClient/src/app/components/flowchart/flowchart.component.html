@@ -1,7 +1,5 @@
-
 <div class="flowchart-wrapper">
   <h1>Guide til passiv investering</h1>
-
 
   <!-- Angular Material Progress Bar -->
   <mat-progress-bar 
@@ -13,54 +11,96 @@
 
   <div class="flow-container">
     <div class="flow-content">
-      <div class="flow-node"
-           [ngClass]="{
-             'slide-out': isTransitioning,
-             'left': transitionDirection === 'left',
-             'right': transitionDirection === 'right'
-           }">
-        <ng-container *ngTemplateOutlet="nodeContent; context: { node: currentNode }"></ng-container>
-      </div>
-      <div *ngIf="nextNode" class="flow-node"
-           [ngClass]="{
-             'slide-in': isTransitioning,
-             'left': transitionDirection === 'left',
-             'right': transitionDirection === 'right'
-           }">
-        <ng-container *ngTemplateOutlet="nodeContent; context: { node: nextNode }"></ng-container>
-      </div>
+      <mat-card 
+        class="modern-card"
+        [ngClass]="{
+          'slide-out': isTransitioning,
+          'left': transitionDirection === 'left',
+          'right': transitionDirection === 'right'
+        }">
+        <ng-container *ngIf="currentNode">
+          <ng-container *ngIf="currentNode.type === 'question'">
+            <mat-card-header class="question">
+              <mat-card-title >{{ currentNode.content }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="options">
+              <button *ngFor="let option of currentNode.next" 
+                      (click)="selectAnswer(option.answer)" 
+                      mat-raised-button 
+                      color="primary" 
+                      class="option-button">
+                {{ option.answer }}
+              </button>
+            </mat-card-content>
+          </ng-container>
+          <ng-container *ngIf="currentNode.type === 'result'">
+            <mat-card-header class="result">
+              <mat-card-title >{{ currentNode.content }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <button (click)="resetFlow()" 
+                      mat-stroked-button 
+                      class="reset-button">
+                Start forfra
+              </button>
+            </mat-card-content>
+          </ng-container>
+          <div *ngIf="currentNode.infoBox" class="info-box">
+            <h3>Info</h3>
+            <p>{{ currentNode.infoBox }}</p>
+          </div>
+        </ng-container>
+      </mat-card>
+
+      <mat-card *ngIf="nextNode" 
+                class="modern-card"
+                [ngClass]="{
+                  'slide-in': isTransitioning,
+                  'left': transitionDirection === 'left',
+                  'right': transitionDirection === 'right'
+                }">
+        <ng-container *ngIf="nextNode">
+          <ng-container *ngIf="nextNode.type === 'question'">
+            <mat-card-header class="question">
+              <mat-card-title >{{ nextNode.content }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="options">
+              <button *ngFor="let option of nextNode.next" 
+                      (click)="selectAnswer(option.answer)" 
+                      mat-raised-button 
+                      color="primary" 
+                      class="option-button">
+                {{ option.answer }}
+              </button>
+            </mat-card-content>
+          </ng-container>
+          <ng-container *ngIf="nextNode.type === 'result'">
+            <mat-card-header class="result">
+            <mat-card-title >{{ nextNode.content }}</mat-card-title>
+          </mat-card-header>
+            <mat-card-content>
+              <button (click)="resetFlow()" 
+                      mat-stroked-button 
+                      class="reset-button">
+                Start forfra
+              </button>
+            </mat-card-content>
+          </ng-container>
+          <div *ngIf="nextNode.infoBox" class="info-box">
+            <h3>Info</h3>
+            <p>{{ nextNode.infoBox }}</p>
+          </div>
+        </ng-container>
+      </mat-card>
     </div>
   </div>
 
   <div class="navigation-buttons">
     <!-- Angular Material Button for navigation -->
-    <button *ngIf="canGoBack" (click)="goBack()" mat-stroked-button class="back-button">
+    <button *ngIf="canGoBack" (click)="goBack()" 
+            mat-stroked-button 
+            class="back-button">
       Tilbage
     </button>
   </div>
 </div>
-
-<ng-template #nodeContent let-node="node">
-  <div class="node-content">
-    <ng-container *ngIf="node.type === 'question'">
-      <h2 class="question">{{ node.content }}</h2>
-      <div class="options">
-        <!-- Material Button for options -->
-        <button *ngFor="let option of node.next" (click)="selectAnswer(option.answer)" mat-raised-button color="primary" class="option-button">
-          {{ option.answer }}
-        </button>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="node.type === 'result'">
-      <h2 class="result">{{ node.content }}</h2>
-      <!-- Material Button for resetting -->
-      <button (click)="resetFlow()" mat-stroked-button class="reset-button">
-        Start forfra
-      </button>
-    </ng-container>
-    <div *ngIf="node.infoBox" class="info-box">
-      <h3>Info</h3>
-      <p>{{ node.infoBox }}</p>
-    </div>
-  </div>
-</ng-template>

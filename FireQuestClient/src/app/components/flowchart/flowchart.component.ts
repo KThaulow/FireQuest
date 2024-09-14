@@ -4,13 +4,14 @@ import { FlowNode } from '../../models/nodes/flow-node.model';
 import { CommonModule } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-flowchart',
   templateUrl: './flowchart.component.html',
-  styleUrls: ['./flowchart.component.css'],
+  styleUrls: ['./flowchart.component.scss'],
   standalone: true,
-  imports: [CommonModule, MatProgressBarModule, MatButtonModule]
+  imports: [CommonModule, MatProgressBarModule, MatButtonModule, MatCardModule]
 })
 export class FlowchartComponent implements OnInit {
   currentNode!: FlowNode;
