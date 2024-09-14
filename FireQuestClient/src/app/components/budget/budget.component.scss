@@ -1,19 +1,9 @@
-.main-title {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
+@import '../../../styles.scss';
+
   .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-  }
-  
-  /* Link List Section */
-  .link-list-container {
-    background-color: #303030;
-    padding: 0px;
-    margin-bottom: 20px;
   }
   
   .link-list {
@@ -26,8 +16,8 @@
   /* Individual Link Card */
   .link-card {
     width: 300px;
-    background-color: #424242;
-    color: #ffffff;
+    margin: 0px 20px 20px 20px;
+    background-color: white;
   }
   
   .link-card .mat-card-title {
@@ -38,17 +28,15 @@
   .link-card .mat-card-content {
     color: #bbbbbb;
   }
-  
+
+  .mat-divider {
+    margin: 20px 0px;
+  }
+
   .link-card .mat-raised-button {
     margin-bottom: 8px;
+    color: #4caf50;
   }
-  
-  /* Card Hover Effect */
-  .link-card:hover {
-    transform: translateY(-2px);
-    transition: transform 0.3s ease-in-out;
-  }
-  
   /* Budget Info Section */
   .budget-info {
     background-color: #f9f9f9;
@@ -60,11 +48,10 @@
     color: #4caf50;
     font-size: 1.8em;
   }
-  
-  .budget-info h3 {
-    font-size: 1.5em;
-    margin-top: 20px;
-    color: #333;
+
+  .budget-info .mat-card-subtitle{
+    margin: 200px;
+    color: red;
   }
   
   .budget-info p {
@@ -73,7 +60,7 @@
   }
 
   .dark-list {
-    background-color: #333; /* Dark background */
+    background-color: white; /* Dark background */
     border-radius: 8px;
     padding: 16px;
     color: #e0e0e0; /* Light text for contrast */
