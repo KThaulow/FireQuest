@@ -9,6 +9,10 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+$primary: mat.define-palette(mat.$green-palette);
+$accent: mat.define-palette(mat.$green-palette, 200);
+$background: mat.define-palette(mat.$grey-palette, 900);
+
 // Define the theme object.
 $FireQuestClient-theme: mat.define-theme((
   color: (
