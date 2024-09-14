@@ -12,8 +12,8 @@
   /* Link List Section */
   .link-list-container {
     background-color: #303030;
-    padding: 20px;
-    margin-bottom: 40px;
+    padding: 0px;
+    margin-bottom: 20px;
   }
   
   .link-list {
@@ -45,7 +45,7 @@
   
   /* Card Hover Effect */
   .link-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-2px);
     transition: transform 0.3s ease-in-out;
   }
   
@@ -71,20 +71,29 @@
     font-size: 1.1em;
     color: #555;
   }
-  
-  .budget-info .mat-list-item {
-    border: 5px solid red !important; /* Ensure this rule is applied */
-  }
 
-  .budget-info .mat-list-item-content {
-    color: #333 !important; /* Ensure content text is not faded */
+  .dark-list {
+    background-color: #333; /* Dark background */
+    border-radius: 8px;
+    padding: 16px;
+    color: #e0e0e0; /* Light text for contrast */
   }
   
-  .budget-info .mat-list-item a {
-    color: #4caf50; /* Ensure links are visible and stand out */
+  .dark-list mat-list-item {
+    border-bottom: 2px solid #5d5b5b;
+    padding: 10px 0;
   }
   
-  .budget-info .mat-list-item a:hover {
-    text-decoration: underline; /* Add underline on hover for links */
+  .dark-list mat-list-item:last-child {
+    border-bottom: none;
+  }
+  
+  .dark-list a[mat-button] {
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .dark-list a[mat-button]:hover {
+    text-decoration: underline;
   }
 

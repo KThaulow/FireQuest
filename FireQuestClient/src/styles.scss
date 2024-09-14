@@ -6,7 +6,7 @@
 $dark-theme: mat.define-theme((
   color: (
     theme-type: dark,
-    primary: mat.$green-palette,
+    primary: mat.$chartreuse-palette,
     tertiary: mat.$chartreuse-palette
   ),
   density: (
@@ -41,33 +41,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
-.mat-toolbar {
-  background-color: $anthracite-grey;
-  color: $white;
-}
-
-.mat-mdc-raised-button.mat-primary {
-  background-color: $dark-green;
-}
-
-.mat-mdc-card {
-  background-color: $white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.finance-accent {
-  color: $dark-green;
-}
-
-.finance-bg {
-  background-color: $anthracite-grey;
-  color: $white;
-}
-
-h1 {
-  color: $dark-green; /* Set default color for all h1 elements */
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
