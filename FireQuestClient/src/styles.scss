@@ -38,4 +38,13 @@ body {
 h1 {
   text-align: left;
   margin: 20px 0px 0px 20px;
+  color: $dark-green;
+}
+
+/* Enhanced Styles */
+a {
+  color: $dark-green;
+  &:hover {
+    color: $even-darker-green;
+  }
 }

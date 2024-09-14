@@ -1,86 +1,156 @@
 @import '../../../styles.scss';
 
-  .content-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .link-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  /* Individual Link Card */
-  .link-card {
-    width: 300px;
-    margin: 0px 20px 20px 20px;
-    background-color: white;
-  }
-  
-  .link-card .mat-card-title {
-    color: #ffffff;
-    font-size: 1.4em;
-  }
-  
-  .link-card .mat-card-content {
-    color: #bbbbbb;
-  }
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-  .mat-divider {
-    margin: 20px 0px;
-  }
+/* Redesigned Link List */
+.link-list {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  gap: 24px; /* Space between cards */
+  justify-content: center; /* Center the cards */
+  padding: 0; /* Remove any padding if present */
+  margin: 0; /* Remove any margin if present */
+}
 
-  .link-card .mat-raised-button {
-    margin-bottom: 8px;
-    color: #4caf50;
-  }
-  /* Budget Info Section */
-  .budget-info {
-    background-color: #f9f9f9;
-    color: #333;
-    margin-bottom: 40px;
-  }
+/* Card Container Styles */
+.link-card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Smaller Top Row Cards */
+.link-card-container .modern-card.top-row {
+  width: 300px; /* Smaller width for top row cards */
+}
+
+/* Updated Card Styles */
+.modern-card {
+  background-color: $white;
+  border-radius: 12px; /* Consistent corner rounding */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  display: flex;
+  flex-direction: column; /* Ensure button is at the bottom */
+  height: 100%; /* Allow the card to grow within the container */
   
-  .budget-info .mat-card-title {
-    color: #4caf50;
-    font-size: 1.8em;
-  }
-
-  .budget-info .mat-card-subtitle{
-    margin: 200px;
-    color: red;
-  }
-  
-  .budget-info p {
-    font-size: 1.1em;
-    color: #555;
-  }
-
-  .dark-list {
-    background-color: white; /* Dark background */
-    border-radius: 8px;
+  mat-card-header {
+    background-color: $dark-green;
+    color: $white;
     padding: 16px;
-    color: #e0e0e0; /* Light text for contrast */
-  }
-  
-  .dark-list mat-list-item {
-    border-bottom: 2px solid #5d5b5b;
-    padding: 10px 0;
-  }
-  
-  .dark-list mat-list-item:last-child {
-    border-bottom: none;
-  }
-  
-  .dark-list a[mat-button] {
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .dark-list a[mat-button]:hover {
-    text-decoration: underline;
+    border-top-left-radius: 12px; /* Consistent corner rounding */
+    border-top-right-radius: 12px; /* Consistent corner rounding */
+    position: relative; /* Ensure it stays at the top */
   }
 
+  mat-card-title {
+    font-size: 1.6em;
+    font-weight: 500;
+  }
+
+  mat-card-content {
+    color: $anthracite-grey;
+    padding: 20px;
+    flex: 1; /* Make content area flexible to push button down */
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+    
+    a[mat-stroked-button] {
+      border-color: $dark-green;
+      color: $dark-green;
+      &:hover {
+        background-color: $dark-green;
+        color: $white;
+      }
+    }
+  }
+}
+
+/* Button at the Bottom of the Link List */
+.link-list-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.link-list-button a[mat-raised-button] {
+  border-radius: 8px; /* Consistent corner rounding */
+}
+
+/* Budget Info Section */
+.budget-info-wrapper {
+  margin-top: 40px;
+  max-width: 1200px; /* Match the width of the link list */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.budget-info {
+  width: 100%;
+  background-color: $light-grey;
+  color: $anthracite-grey;
+  padding: 0px;
+  border-radius: 12px; /* Consistent corner rounding */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  
+  mat-card-header {
+    background-color: $dark-green;
+    color: $white;
+    padding: 16px;
+    border-top-left-radius: 12px; /* Consistent corner rounding */
+    border-top-right-radius: 12px; /* Consistent corner rounding */
+  }
+
+  mat-card-title {
+    font-size: 2em;
+    font-weight: 600;
+  }
+
+  mat-card-subtitle {
+    color: $even-darker-green;
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-top: 20px;
+  }
+
+  p {
+    font-size: 1.2em;
+    color: $anthracite-grey;
+    line-height: 1.6;
+  }
+
+  mat-divider {
+    margin: 20px 0;
+  }
+}
+
+/* Dark List Styling */
+.dark-list {
+  background-color: $white;
+  padding: 16px;
+  border-radius: 8px; /* Consistent corner rounding */
+  color: $anthracite-grey;
+  
+  mat-list-item {
+    border-bottom: 1px solid $even-darker-green;
+    padding: 10px 0;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  a[mat-button] {
+    color: $dark-green;
+    font-weight: 600;
+
+    &:hover {
+      color: $even-darker-green;
+    }
+  }
+}
