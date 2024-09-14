@@ -8,6 +8,9 @@
   color: #333;
   padding: 20px;
   box-sizing: border-box;
+  max-width: 1200px; /* Max width set to 1200px */
+  margin: 0 auto; /* Centered the flowchart */
+  position: relative; /* Added for positioning the back button */
 }
 
 /* Progress Bar */
@@ -62,7 +65,8 @@
   max-width: 700px;
   width: 100%;
   text-align: center;
-  background: white;
+  background: #2e7d32; /* Green background */
+  color: white; /* White text */
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
@@ -70,7 +74,7 @@
 
 .question, .result {
   font-size: 26px;
-  color: #333;
+  color: white; /* White text */
   margin-bottom: 20px;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -79,46 +83,66 @@
 /* Options and Buttons */
 .options {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 20px; /* Spacing between buttons */
+  width: 100%; /* Full width of container */
 }
 
 .option-button, .reset-button {
-  background-color: #2e7d32; /* Darker green */
-  color: white;
-  border: none;
-  padding: 14px 28px;
+  background-color: white; /* White background */
+  color: #43a047; /* Green text */
+  border: 2px solid #43a047; /* Green border */
+  padding: 16px; /* Adjusted padding for better text visibility */
   font-size: 18px;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   font-weight: 500;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12); /* Material light shadow */
+  width: 100%; /* Equal width */
+  text-align: center; /* Center text */
+  display: flex;
+  align-items: center; /* Center text vertically */
+  justify-content: center; /* Center text horizontally */
+  box-sizing: border-box; /* Ensure padding is included in button size */
 }
 
 .option-button:hover, .reset-button:hover {
-  background-color: #27632a; /* Even darker green on hover */
+  background-color: #e8f5e9; /* Lighter green background on hover */
+  color: #43a047; /* Maintain green text color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
 }
 
+/* Back Button */
 .navigation-buttons {
-  position: absolute;
+  position: absolute; /* Positioned absolutely to the bottom-left */
   bottom: 20px;
   left: 20px;
+  width: calc(100% - 40px); /* Ensure the button is within the wrapper's width */
 }
 
 .back-button {
-  background-color: #d3d3d3;
-  color: #333;
-  border: none;
-  padding: 10px 25px;
+  background-color: #757575; /* Grey (Material Grey 600) */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 16px; /* Adjust padding */
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12); /* Material light shadow */
+  width: 100%; /* Equal width */
+  text-align: center; /* Center text */
+  display: flex;
+  align-items: center; /* Center text vertically */
+  justify-content: center; /* Center text horizontally */
+  box-sizing: border-box; /* Ensure padding is included in button size */
 }
 
 .back-button:hover {
-  background-color: #bababa;
+  background-color: #9e9e9e; /* Lighter grey on hover (Material Grey 400) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
 }
 
 /* Animations */
@@ -158,24 +182,24 @@
   to { transform: translateX(100%); }
 }
 
-  /* Info Box Styling */
-  .info-box {
-    background-color: #e8f5e9; /* Light green background */
-    color: #2e7d32; /* Darker green text */
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: left;
-  }
-  
-  .info-box h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .info-box p {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
-  }
+/* Info Box Styling */
+.info-box {
+  background-color: #e8f5e9; /* Light green background */
+  color: #2e7d32; /* Darker green text */
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.info-box h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}

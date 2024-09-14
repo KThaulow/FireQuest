@@ -30,8 +30,8 @@
 /* Updated Card Styles */
 .modern-card {
   background-color: $white;
-  border-radius: 12px; /* Consistent corner rounding */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  border-radius: 0px; /* Consistent corner rounding */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
   display: flex;
   flex-direction: column; /* Ensure button is at the bottom */
   height: 100%; /* Allow the card to grow within the container */
@@ -40,8 +40,7 @@
     background-color: $dark-green;
     color: $white;
     padding: 16px;
-    border-top-left-radius: 12px; /* Consistent corner rounding */
-    border-top-right-radius: 12px; /* Consistent corner rounding */
+    border-radius: 0px; /* Consistent corner rounding */
     position: relative; /* Ensure it stays at the top */
   }
 
@@ -52,7 +51,7 @@
 
   mat-card-content {
     color: $anthracite-grey;
-    padding: 20px;
+    padding: 5px 20px;
     flex: 1; /* Make content area flexible to push button down */
   }
 
@@ -92,18 +91,17 @@
 
 .budget-info {
   width: 100%;
-  background-color: $light-grey;
+  background-color: white;
   color: $anthracite-grey;
   padding: 0px;
-  border-radius: 12px; /* Consistent corner rounding */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 0px; /* Consistent corner rounding */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   
   mat-card-header {
     background-color: $dark-green;
     color: $white;
     padding: 16px;
-    border-top-left-radius: 12px; /* Consistent corner rounding */
-    border-top-right-radius: 12px; /* Consistent corner rounding */
+    border-radius: 0px; /* Consistent corner rounding */
   }
 
   mat-card-title {

@@ -1,43 +1,66 @@
 /* Menu Bar Styling */
 .menu-bar {
-    background-color: #27632a;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .menu-bar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .menu-bar li {
-    position: relative;
-  }
-  
-  .menu-bar a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
-    padding: 10px 15px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .menu-bar a:hover,
-  .menu-bar a.active {
-    background-color: #2e7d32;
-    color: #fff;
-    border-radius: 5px;
-  }
-  
-  /* Optional: Adding a subtle transition effect */
-  .menu-bar a {
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  }
-  
-  .menu-bar a:hover {
-    background-color: #2e7d32;
-    transform: scale(1.05);
-  }
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.menu-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu-bar li {
+  position: relative;
+}
+
+.menu-bar a {
+  text-decoration: none;
+  color: #2e7d32;
+  font-size: 16px;
+  padding: 10px 15px;
+  position: relative;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.menu-bar a:hover,
+.menu-bar a.active {
+  color: #2e7d32;
+}
+
+.menu-bar a.active::after,
+.menu-bar a:hover::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  height: 2px;
+  background-color: #2e7d32;
+  transition: width 0.3s, left 0.3s, right 0.3s;
+  width: 100%;
+  transform-origin: center;
+  left: 0;
+  right: 0;
+}
+
+.menu-bar a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  height: 2px;
+  background-color: transparent;
+  transition: width 0.3s, left 0.3s, right 0.3s;
+  width: 0;
+  transform-origin: center;
+}
+
+/* Optional: Adding a subtle transform effect */
+.menu-bar a:hover {
+  transform: scale(1.05);
+}
