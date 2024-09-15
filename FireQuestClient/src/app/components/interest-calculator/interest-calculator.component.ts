@@ -4,13 +4,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-interest-calculator',
   templateUrl: './interest-calculator.component.html',
-  styleUrls: ['./interest-calculator.component.css'],
+  styleUrls: ['./interest-calculator.component.scss'],
   standalone: true,
-  imports: [FormsModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatButtonModule],
+  imports: [FormsModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatCardModule],
 })
 export class InterestCalculatorComponent {
   existingSavings = 50000;
