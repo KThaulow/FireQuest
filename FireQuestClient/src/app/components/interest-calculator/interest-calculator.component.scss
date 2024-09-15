@@ -4,61 +4,55 @@
   height: 100vh;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px 20px 0px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
-.interest-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.modern-card, .result-card {
-  width: 100%;
-  max-width: 600px;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 0px;
-  padding: 16px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.period-input {
+.flex-container {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  flex: 1;
 }
 
-.calculate-button {
-  padding: 10px;
-  background-color: #E8F5E9;
-  color: #4CAF50;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.3s;
+.interest-wrapper {
+  width: 50%; /* Left side (50% width for the form) */
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  align-items: flex-start;
 }
 
-.calculate-button:hover {
-  background-color: #C8E6C9;
+.right-side-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%; /* Right side (50% width for result and chart) */
+  margin: 10px;
 }
 
 .result-wrapper {
-  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
 }
 
-.result-card {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+.chart-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.full-width {
+  width: 100%; /* Ensure it takes the full width of the container */
+}
+
+.modern-card, .result-card, .chart-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: #F5F5F5;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card {
+  max-width: 1000px;
 }

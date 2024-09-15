@@ -7,11 +7,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartData, ChartOptions } from 'chart.js';
-  
+
 @Component({
   selector: 'app-interest-calculator',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, BaseChartDirective],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    BaseChartDirective,
+  ],
   templateUrl: './interest-calculator.component.html',
   styleUrls: ['./interest-calculator.component.scss'],
 })
@@ -40,18 +48,18 @@ export class InterestCalculatorComponent {
   public chartOptions: ChartOptions<'line'> = {
     responsive: true,
     scales: {
-      x: { 
-        title: { 
-          display: true, 
-          text: 'Years' 
-        } 
-      },
-      y: { 
-        title: { 
-          display: true, 
-          text: 'Amount' 
+      x: {
+        title: {
+          display: true,
+          text: 'Years',
         },
-        beginAtZero: true 
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Amount',
+        },
+        beginAtZero: true,
       },
     },
   };
@@ -75,5 +83,8 @@ export class InterestCalculatorComponent {
     // Update chart data and labels
     this.chartData.labels = Array.from({ length: totalYears }, (_, i) => `Year ${i + 1}`);
     this.chartData.datasets[0].data = yearlyData;
+    
+    // Set the final result to the last balance
+    this.result = balance;
   }
 }

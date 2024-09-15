@@ -1,6 +1,7 @@
 <div class="content-wrapper">
-  <h1>Udregn renters rente</h1>
+  <h1 class="page-title">Udregn renters rente</h1>
 
+  <div class="flex-container">
   <div class="interest-wrapper">
     <mat-card class="modern-card">
       <form>
@@ -23,18 +24,15 @@
         </div>
 
         <!-- Savings period -->
-        <div class="form-group">
-          <label for="period-input">Opsparingsperiode</label>
-          <div class="period-input">
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>År</mat-label>
-              <input id="year-input" matInput type="number" placeholder="0" [(ngModel)]="years" name="years" min="0" (ngModelChange)="calculate()">
-            </mat-form-field>
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>Mdr.</mat-label>
-              <input id="month-input" matInput type="number" placeholder="0" [(ngModel)]="months" name="months" min="0" (ngModelChange)="calculate()">
-            </mat-form-field>
-          </div>
+        <div class="form-group period-input">
+          <mat-form-field appearance="fill" class="half-width">
+            <mat-label>År</mat-label>
+            <input id="year-input" matInput type="number" placeholder="0" [(ngModel)]="years" name="years" min="0" (ngModelChange)="calculate()">
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="half-width">
+            <mat-label>Mdr.</mat-label>
+            <input id="month-input" matInput type="number" placeholder="0" [(ngModel)]="months" name="months" min="0" (ngModelChange)="calculate()">
+          </mat-form-field>
         </div>
 
         <!-- Compound interval -->
@@ -60,34 +58,34 @@
     </mat-card>
   </div>
 
+  <div class="right-side-wrapper">
   <!-- Result Card -->
   <div class="result-wrapper" *ngIf="result">
     <mat-card class="result-card">
       <mat-card-header>
-        <mat-card-title>Resultat</mat-card-title>
+        <mat-card-title>
+          Din opsparing vil vokse til: {{ result | currency:'DKK':'symbol':'1.0-0' }}
+        </mat-card-title>
       </mat-card-header>
-      <mat-card-content>
-        <p>Din opsparing vil vokse til: {{ result | currency:'DKK' }}</p>
-      </mat-card-content>
     </mat-card>
   </div>
 
-
   <!-- Result Chart -->
-<!-- Result Chart -->
-<div *ngIf="chartData.datasets[0].data.length">
-  <mat-card class="chart-card">
-    <mat-card-header>
-      <mat-card-title>Årlig Opsparing Vækst</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <canvas baseChart 
-              [datasets]="chartData.datasets" 
-              [labels]="chartData.labels" 
-              [type]="'line'"
-              [options]="chartOptions">
-      </canvas>
-    </mat-card-content>
-  </mat-card>
+  <div *ngIf="chartData.datasets[0].data.length" class="chart-wrapper">
+    <mat-card class="chart-card">
+      <mat-card-header>
+        <mat-card-title>Årlig Opsparing Vækst</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas baseChart 
+                [datasets]="chartData.datasets" 
+                [labels]="chartData.labels" 
+                [type]="'line'"
+                [options]="chartOptions">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
 </div>
 </div>
