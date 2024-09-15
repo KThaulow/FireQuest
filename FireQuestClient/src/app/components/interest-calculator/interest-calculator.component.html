@@ -9,7 +9,7 @@
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Eksisterende opsparing</mat-label>
             <span matTextSuffix>kr&nbsp;</span>
-            <input matInput type="number" placeholder="100000" [(ngModel)]="existingSavings" name="existingSavings">
+            <input matInput type="number" placeholder="100000" [(ngModel)]="existingSavings" name="existingSavings" (ngModelChange)="calculate()">
           </mat-form-field>
         </div>
 
@@ -17,7 +17,7 @@
         <div class="form-group">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Forventet årligt afkast</mat-label>
-            <input matInput type="number" placeholder="0" [(ngModel)]="expectedReturn" name="expectedReturn">
+            <input matInput type="number" placeholder="0" [(ngModel)]="expectedReturn" name="expectedReturn" (ngModelChange)="calculate()">
             <span matTextSuffix>%</span>
           </mat-form-field>
         </div>
@@ -28,11 +28,11 @@
           <div class="period-input">
             <mat-form-field appearance="fill" class="full-width">
               <mat-label>År</mat-label>
-              <input id="year-input" matInput type="number" placeholder="0" [(ngModel)]="years" name="years" min="0">
+              <input id="year-input" matInput type="number" placeholder="0" [(ngModel)]="years" name="years" min="0" (ngModelChange)="calculate()">
             </mat-form-field>
             <mat-form-field appearance="fill" class="full-width">
               <mat-label>Mdr.</mat-label>
-              <input id="month-input" matInput type="number" placeholder="0" [(ngModel)]="months" name="months" min="0">
+              <input id="month-input" matInput type="number" placeholder="0" [(ngModel)]="months" name="months" min="0" (ngModelChange)="calculate()">
             </mat-form-field>
           </div>
         </div>
@@ -41,7 +41,7 @@
         <div class="form-group">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Interval af rentetilskrivning</mat-label>
-            <mat-select [(ngModel)]="compoundInterval" name="compoundInterval">
+            <mat-select [(ngModel)]="compoundInterval" name="compoundInterval" (selectionChange)="calculate()">
               <mat-option value="annually">Årligt</mat-option>
               <mat-option value="monthly">Månedligt</mat-option>
             </mat-select>
@@ -53,15 +53,41 @@
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Månedlig indbetaling</mat-label>
             <span matTextSuffix>kr</span>
-            <input matInput type="number" placeholder="0" [(ngModel)]="monthlyContribution" name="monthlyContribution">
+            <input matInput type="number" placeholder="0" [(ngModel)]="monthlyContribution" name="monthlyContribution" (ngModelChange)="calculate()">
           </mat-form-field>
         </div>
-
-        <!-- Calculate button -->
-        <button class="calculate-button" mat-stroked-button color="primary" type="button" (click)="calculate()">
-          Beregn
-        </button>
       </form>
     </mat-card>
   </div>
+
+  <!-- Result Card -->
+  <div class="result-wrapper" *ngIf="result">
+    <mat-card class="result-card">
+      <mat-card-header>
+        <mat-card-title>Resultat</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Din opsparing vil vokse til: {{ result | currency:'DKK' }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <!-- Result Chart -->
+<!-- Result Chart -->
+<div *ngIf="chartData.datasets[0].data.length">
+  <mat-card class="chart-card">
+    <mat-card-header>
+      <mat-card-title>Årlig Opsparing Vækst</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <canvas baseChart 
+              [datasets]="chartData.datasets" 
+              [labels]="chartData.labels" 
+              [type]="'line'"
+              [options]="chartOptions">
+      </canvas>
+    </mat-card-content>
+  </mat-card>
+</div>
 </div>
