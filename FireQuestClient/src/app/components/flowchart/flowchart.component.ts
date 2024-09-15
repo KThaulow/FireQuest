@@ -17,7 +17,6 @@ export class FlowchartComponent implements OnInit {
   currentNode!: FlowNode;
   nextNode: FlowNode | null = null;
   nodeHistory: FlowNode[] = [];
-  transitionDirection: 'left' | 'right' = 'left';
   isTransitioning = false;
   progressPercentage = 0;
 
@@ -30,8 +29,9 @@ export class FlowchartComponent implements OnInit {
   }
 
   selectAnswer(answer: string): void {
+    if (this.isTransitioning) return;
+
     this.nextNode = this.flowService.selectAnswer(this.currentNode, answer);
-    this.transitionDirection = 'left';
     this.isTransitioning = true;
     
     setTimeout(() => {
@@ -40,23 +40,22 @@ export class FlowchartComponent implements OnInit {
       this.nextNode = null;
       this.isTransitioning = false;
       this.updateProgress();
-    }, 500);
+    }, 500); // Match this with your transition duration in SCSS
   }
 
   goBack(): void {
-    if (this.canGoBack) {
-      this.transitionDirection = 'right';
-      this.nextNode = this.nodeHistory[this.nodeHistory.length - 2];
-      this.isTransitioning = true;
-      
-      setTimeout(() => {
-        this.nodeHistory.pop();
-        this.currentNode = this.nextNode!;
-        this.nextNode = null;
-        this.isTransitioning = false;
-        this.updateProgress();
-      }, 500);
-    }
+    if (!this.canGoBack || this.isTransitioning) return;
+
+    this.isTransitioning = true;
+    this.nextNode = this.nodeHistory[this.nodeHistory.length - 2];
+    
+    setTimeout(() => {
+      this.nodeHistory.pop();
+      this.currentNode = this.nextNode!;
+      this.nextNode = null;
+      this.isTransitioning = false;
+      this.updateProgress();
+    }, 500); // Match this with your transition duration in SCSS
   }
 
   resetFlow(): void {
@@ -74,9 +73,8 @@ export class FlowchartComponent implements OnInit {
   private updateProgress(): void {
     const maxDepth = this.flowService.findMaxDepth(this.currentNode);
     this.progressPercentage = (this.nodeHistory.length / (maxDepth + this.nodeHistory.length)) * 100;
-
-    if(this.currentNode.type == 'result')
-    {
+    
+    if (this.currentNode.type === 'result') {
       this.progressPercentage = 100;
     }
   }

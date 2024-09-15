@@ -1,172 +1,160 @@
 @import '../../../styles.scss';
 
-/* General Layout */
+/* Flowchart Wrapper */
 .flowchart-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  height: 100vh; /* Full viewport height */
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
-  max-width: 1200px; /* Max width set to 1200px */
-  margin: 0 auto; /* Centered the flowchart */
-  position: relative; /* Added for positioning the back button */
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  color: #333;
 }
 
 /* Progress Bar */
 .progress-bar {
-  height: 8px;
-  background-color: #d3d3d3;
-  position: relative;
-  z-index: 10;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-.progress {
-  height: 100%;
-  background-color: #2e7d32; /* Darker green */
-  transition: width 0.3s ease-in-out;
-  border-radius: 4px;
+/* Flow Container */
+.flow-container {
+  background-color: #f5f5f5;
+  border-radius: 0px;
+  overflow: hidden;
+  flex: 1; /* Take remaining vertical space */
+  position: relative; /* For positioning the card container */
 }
-/* Updated Card Styles */
-.modern-card {
-  background-color: $white;
-  border-radius: 0; /* Consistent corner rounding */
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
+
+/* Flow Content */
+.flow-content {
+  position: absolute;
+  top: 0;
+  bottom: 20px; /* Adjust based on the height of navigation-buttons */
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+/* Card Container */
+.card-container {
+  position: absolute;
   display: flex;
-  flex-direction: column; /* Ensure button is at the bottom */
-  height: auto; /* Let the card height adjust based on content */
-  overflow: hidden; /* Hide overflow to prevent buttons from sticking out */
-  
-  mat-card-header {
+  width: 200%; /* Double the width to accommodate two cards side by side */
+  left: 0;
+  top: 0;
+  height: 100%; /* Full height of the container */
+  border-radius: 0px;
+}
+
+/* Modern Card */
+.modern-card {
+  width: 50%; /* Each card takes up half of the container width */
+  flex-shrink: 0;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Full height of the container */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  border-radius: 0px;
+}
+
+/* Card Header */
+mat-card-header {
+  background-color: $dark-green;
+  color: white;
+  padding: 16px;
+  min-height: 90px;
+}
+
+/* Card Title */
+mat-card-title {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+/* Card Content */
+mat-card-content {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Options and Reset */
+.options, .reset {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Option and Reset Buttons */
+.option-button, .reset-button {
+  padding: 10px;
+  border: none;
+  background-color: #E8F5E9;
+  color: #4CAF50;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #C8E6C9;
+  }
+}
+
+/* Info Box */
+.info-box {
+  margin-top: 16px;
+  padding: 10px;
+  background-color: #E3F2FD;
+  border-radius: 0px;
+
+  h3 {
+    margin-top: 0;
+    color: #1976D2;
+  }
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  margin-top: 0px;
+  display: flex;
+  justify-content: flex-start;
+  position: relative; /* Make sure it stays in place */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Ensure it fits the reserved space */
+  z-index: 10; /* Above other content */
+}
+
+/* Placeholder for Back Button */
+.navigation-buttons .back-button-placeholder {
+  display: none; /* Hide placeholder but reserve space */
+  height: 100%;
+}
+
+/* Back Button */
+.back-button {
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+  border-color: $dark-green;
+  color: $dark-green;
+
+  &:hover {
     background-color: $dark-green;
     color: $white;
-    padding: 16px;
-    border-radius: 0; /* Consistent corner rounding */
-    position: relative; /* Ensure it stays at the top */
-  }
-
-  mat-card-title {
-    font-size: 1.6em;
-    font-weight: 500;
-  }
-
-  mat-card-content {
-    color: $anthracite-grey;
-    padding: 5px 20px;
-    flex: 1; /* Make content area flexible to push button down */
-    overflow: hidden; /* Hide overflow in case of content spill */
-  }
-
-  mat-card-actions {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    
-    a[mat-stroked-button] {
-      border-color: $dark-green;
-      color: $dark-green;
-      &:hover {
-        background-color: $dark-green;
-        color: $white;
-      }
-    }
   }
 }
 
-/* Options and Buttons */
-.options {
-  display: flex;
-  flex-direction: column; /* Stack buttons vertically */
-  gap: 20px; /* Spacing between buttons */
-  width: 100%; /* Full width of container */
-  margin-top: 10px; /* Add margin to ensure buttons don’t stick to content above */
-}
-
-.option-button, .reset-button {
-  background-color: white; /* White background */
-  color: #43a047; /* Green text */
-  border: 2px solid #43a047; /* Green border */
-  padding: 16px; /* Adjusted padding for better text visibility */
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  font-weight: 500;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12); /* Material light shadow */
-  width: 100%; /* Equal width */
-  text-align: center; /* Center text */
-  display: flex;
-  align-items: center; /* Center text vertically */
-  justify-content: center; /* Center text horizontally */
-  box-sizing: border-box; /* Ensure padding is included in button size */
-}
-
-.option-button:hover, .reset-button:hover {
-  background-color: #e8f5e9; /* Lighter green background on hover */
-  color: #43a047; /* Maintain green text color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
-}
-
-/* Animations */
-.slide-in.left {
-  animation: slideInLeft 0.5s forwards;
-}
-
-.slide-out.left {
-  animation: slideOutLeft 0.5s forwards;
-}
-
-.slide-in.right {
-  animation: slideInRight 0.5s forwards;
-}
-
-.slide-out.right {
-  animation: slideOutRight 0.5s forwards;
-}
-
-@keyframes slideInLeft {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes slideOutLeft {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-
-@keyframes slideInRight {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes slideOutRight {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
-}
-
-/* Info Box Styling */
-.info-box {
-  background-color: #e8f5e9; /* Light green background */
-  color: #2e7d32; /* Darker green text */
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: left;
-}
-
-.info-box h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.info-box p {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
+/* Show the back button only if there's a previous page */
+.show-back-button .back-button-placeholder {
+  display: block; /* Show placeholder if back button should be visible */
 }
