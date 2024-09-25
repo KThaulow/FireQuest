@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="sidebar">
+      <h3>Categories</h3>
+      <ul>
+        <li (click)="showAllArticles()" 
+            (keydown.enter)="showAllArticles()"
+            (keydown.space)="showAllArticles()"
+            tabindex="0"
+            role="button"
+            [attr.aria-pressed]="currentCategory === null">
+          All Articles
+        </li>
+        <li *ngFor="let category of categories" 
+            (click)="filterByCategory(category)" 
+            (keydown.enter)="filterByCategory(category)"
+            (keydown.space)="filterByCategory(category)"
+            tabindex="0"
+            role="button"
+            [attr.aria-pressed]="currentCategory === category">
+          {{ category }}
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <h2>Articles</h2>
+      <div class="article-list">
+        <article *ngFor="let article of filteredArticles">
+          <h3>{{ article.title }}</h3>
+          <markdown [data]="article.content"></markdown>
+          <small>Category: {{ article.category }}</small>
+        </article>
+      </div>
+    </div>
+  </div>
